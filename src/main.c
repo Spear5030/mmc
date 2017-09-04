@@ -28,6 +28,7 @@ const char  *iargv[]={"perl","-we",
 "#line " MakeStr(__LINE__) " " MakeStr(__FILE__) "\n\n"
 "sub new_require(*) {\n"
 "  my $arg=@_>0 ? $_[0] : $_;\n"
+"  $arg =~ s/,/\\./;\n"
 "  my ($pkg,$cfile,$line)=caller;\n"
 "  if ($arg =~ /^\\d+(\\.\\d+)?$/) {\n"
 "    die \"Perl $arg required--this is only version $], stopped at $cfile line $line.\\n\" if $arg>$];\n"

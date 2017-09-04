@@ -3,6 +3,7 @@ $src="./";
 
 sub new_require {
   my $arg=@_>0 ? $_[0] : $_;
+  $arg =~ s/,/\./;
   my ($pkg,$file,$line)=caller;
   if ($arg =~ /^\d+(\.\d+)?$/) {
     die "Perl $arg required--this is only version $], stopped at $file line $line.\n" if $arg>$];
